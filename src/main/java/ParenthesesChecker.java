@@ -8,7 +8,6 @@ public class ParenthesesChecker {
     public boolean checkParentheses(String string) {
 
         Stack<String> parenthesesHolder = new Stack<>();
-        List<String> possibleElements = new ArrayList<>();
         List<String> fronts = new ArrayList<>();
         List<String> backs = new ArrayList<>();
 
