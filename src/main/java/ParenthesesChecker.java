@@ -12,7 +12,6 @@ public class ParenthesesChecker {
         List<String> fronts = new ArrayList<>();
         List<String> backs = new ArrayList<>();
 
-        Collections.addAll(possibleElements, "(",")","[","]","{","}","<",">");
         Collections.addAll(fronts, "(","<","{","[");
         Collections.addAll(backs, ")",">","}","]");
 
@@ -28,16 +27,16 @@ public class ParenthesesChecker {
             At the end we make sure the stack is empty, so that each bracket
             has a back and not just a start.
         */
-        
+
         for (int i = 0; i < string.length(); i++) {
             if (fronts.contains(string.substring(i,i+1))) {
                 parenthesesHolder.push(string.substring(i, i + 1));
             } else if (backs.contains(string.substring(i,i+1))){
-                int currentElement = possibleElements.indexOf(string.substring(i, i + 1));
+                int currentElement = backs.indexOf(string.substring(i, i + 1));
                 if (parenthesesHolder.isEmpty()){
                     return false;
                 }
-                else if (parenthesesHolder.peek().equals(possibleElements.get(currentElement-1))) {
+                else if (parenthesesHolder.peek().equals(fronts.get(currentElement))) {
                     parenthesesHolder.pop();
                 } else {
                     return false;
